@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import LocalFont from 'next/font/local';
 import './globals.css';
@@ -13,8 +13,18 @@ const jonWikFont = LocalFont({
 });
 
 export const metadata: Metadata = {
-  title: 'JonWik Game',
-  description: 'JonWikGame',
+  title: 'Jon Wik Game',
+  description: 'Jon Wik Game for Solana Game Jam',
+  robots: { index: false, follow: false },
+  formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  minimumScale: 1.0,
+  maximumScale: 1.0,
+  userScalable: false,
 };
 
 export default function RootLayout({
