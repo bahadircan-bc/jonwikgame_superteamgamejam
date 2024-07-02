@@ -18,5 +18,8 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "@ardasevinc/prettier-config": "^0.1.4"
   }
 }
