@@ -8,6 +8,7 @@ const TEnv = Type.Object(
       Type.Literal('development'),
       Type.Literal('test'),
     ]),
+    BOT_TOKEN: Type.String(),
   },
   { additionalProperties: false, $id: 'schema:env' },
 );
