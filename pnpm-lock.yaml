@@ -54,6 +54,9 @@ importers:
       rimraf:
         specifier: ^5.0.7
         version: 5.0.7
+      telegraf:
+        specifier: ^4.16.3
+        version: 4.16.3
     devDependencies:
       '@ardasevinc/prettier-config':
         specifier: ^0.1.4
@@ -70,9 +73,6 @@ importers:
       pino-pretty:
         specifier: ^11.2.1
         version: 11.2.1
-      telegraf:
-        specifier: ^4.16.3
-        version: 4.16.3
       tsc-alias:
         specifier: ^1.8.10
         version: 1.8.10
