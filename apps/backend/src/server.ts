@@ -1,10 +1,14 @@
 import Fastify from 'fastify';
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 import appEnv from '@/lib/plugins/env.js';
-import fastifySensible from '@fastify/sensible';
-import fastifyGracefulShutdown from '@ardasevinc/fastify-graceful-shutdown';
-import appRouter from '@/lib/plugins/router.js';
 import { type Env } from '@/lib/schemas/env.js';
+import fastifySensible from '@fastify/sensible';
+
+import fastifyGracefulShutdown from '@ardasevinc/fastify-graceful-shutdown';
+import telegramPlugin from '@/lib/plugins/telegram.js';
+
+import telegramRoutes from '@/routes/telegram/telegram-routes.js';
+import apiRouter from '@/lib/plugins/api-router.js';
 
 // TODO: Create a configuration loader function page: 26 in fastify book
 const envToLogger: Record<Env['NODE_ENV'], any> = {
@@ -54,8 +58,10 @@ const bootApp = async () => {
         next();
       });
     });
+    await fastify.register(telegramPlugin);
 
-    fastify.register(appRouter, { prefix: '/api' });
+    fastify.register(apiRouter, { prefix: '/api' });
+    fastify.register(telegramRoutes);
 
     fastify.log.debug(`PID: ${process.pid}`);
     await fastify.listen({ host: '0.0.0.0', port: fastify.env.PORT });
@@ -64,7 +70,7 @@ const bootApp = async () => {
       `ROUTES:\n${fastify.printRoutes({ commonPrefix: false })}`,
     );
   } catch (error) {
-    fastify.log.error({ msg: 'Error during server startup', error });
+    fastify.log.error(error, 'Error during server startup');
     process.exit(1);
   }
 };

@@ -1,8 +1,18 @@
+import fp from 'fastify-plugin';
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox';
 import { fastifyTelegraf } from '@ardasevinc/fastify-telegraf';
-import { type Context } from 'telegraf';
+import { type Context, Telegraf } from 'telegraf';
 
-const telegram: FastifyPluginAsyncTypebox = async function (fastify, _opts) {
+declare module 'fastify' {
+  interface FastifyInstance {
+    bot: Telegraf;
+  }
+}
+
+const telegramPlugin: FastifyPluginAsyncTypebox = async function (
+  fastify,
+  _opts,
+) {
   await fastify.register(fastifyTelegraf, {
     botToken: fastify.env.BOT_TOKEN,
     decoratorBotName: 'bot',
@@ -17,4 +27,4 @@ const telegram: FastifyPluginAsyncTypebox = async function (fastify, _opts) {
   });
 };
 
-export default telegram;
+export default fp(telegramPlugin, { name: 'telegram-plugin' });
