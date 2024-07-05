@@ -9,6 +9,7 @@ const TEnv = Type.Object(
       Type.Literal('test'),
     ]),
     BOT_TOKEN: Type.String(),
+    GAMESHIFT_API_KEY: Type.String(),
   },
   { additionalProperties: false, $id: 'schema:env' },
 );
