@@ -82,6 +82,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@tma.js/sdk-react':
+        specifier: ^2.2.7
+        version: 2.2.7(@types/react@18.3.3)(react@18.3.1)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -327,6 +330,18 @@ packages:
 
   '@telegraf/types@7.1.0':
     resolution: {integrity: sha512-kGevOIbpMcIlCDeorKGpwZmdH7kHbqlk/Yj6dEpJMKEQw5lk0KVQY0OLXaCswy8GqlIVLd5625OB+rAntP9xVw==}
+
+  '@tma.js/sdk-react@2.2.7':
+    resolution: {integrity: sha512-ooWB9dBDQyjwR76CqToJZFULxsF93XnCWg289OlH/18Walx93RJer/a6D72LxS3bAkjO3HF944zH8QptOVtjHA==}
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@tma.js/sdk@2.6.1':
+    resolution: {integrity: sha512-s0IgweZKNoAhqhrphXKP3x0P+53liKnMZPhua2vEChMZyb9dUeeS2DbfjGJw/sCknHeDfXqzCr0oHrpytDAFNg==}
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -2312,6 +2327,15 @@ snapshots:
       tslib: 2.6.3
 
   '@telegraf/types@7.1.0': {}
+
+  '@tma.js/sdk-react@2.2.7(@types/react@18.3.3)(react@18.3.1)':
+    dependencies:
+      '@tma.js/sdk': 2.6.1
+      react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
+
+  '@tma.js/sdk@2.6.1': {}
 
   '@types/json5@0.0.29': {}
 
